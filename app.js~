@@ -11,7 +11,7 @@ var express = require('express'),
 
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);  //pass a http.Server instance
-server.listen(80);  //
+server.listen(8010);  //
 board = new five.Board();
 
 // on board ready
@@ -48,7 +48,7 @@ board.on("ready", function() {
 });
 
 // make web server listen on port 80
-app.listen(8010);
+
 
 
 // handle web server

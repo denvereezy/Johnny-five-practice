@@ -1,0 +1,132 @@
+body{
+		transform:scale(0);
+	background-image:url('./robot2.jpg');
+	margin-left:-100%;
+	transition:all 2s ease-in-out;
+	-webkit-filter:blur(0.8px);
+}
+
+@-webkit-keyframes lightup{
+	0%{
+		box-shadow: 1px 1px 10px 3px black;
+	}
+	50%{
+		transform:scale(1.02);
+		transition:transform 1s linear;
+	}
+	100%{
+		box-shadow: 1px 1px 50px 10px black;
+	}
+}
+
+
+
+
+h1{ text-shadow:1px 1px red;
+	font-family: 'Open Sans', sans-serif;
+	background:black;
+	color:white;
+	padding:1%;
+	box-shadow: 1px 1px 10px 3px black;
+	border-radius:10px;
+	font-size:3.5vw;
+	font-weight: 900;
+	text-align: center;
+	border:2px solid black;
+
+
+}
+h4{
+	font-family: 'Open Sans', sans-serif;
+	background:red;
+	color:white;
+	padding:1%;
+	box-shadow: 1px 1px 10px 3px black;
+	border-radius:1px;
+	font-size:1.5vw;
+	font-weight: 900;
+	text-align: center;
+	border:2px solid black;
+
+	text-shadow:1px 1px black;
+
+
+}
+
+#lights{
+	background:url(bb2.png);
+	color:turquoise;
+	box-shadow: 1px 1px 50px 3px black;
+	border-radius:10px;
+	font-size:3.5vw;
+	font-weight: 900;
+	text-align: center;
+	border:4px solid black;
+	margin-left: 3%;
+	margin-top: 5%;
+	height:70vh;
+	-webkit-animation:lightup 3s alternate infinite;
+	-webkit-animation-play-state:running;
+	
+}
+#lights:hover{
+	-webkit-animation-play-state: paused;
+}
+#reading{
+	float:left;
+	background:url(bb2.png);
+	color:turquoise;
+	box-shadow: 1px 1px 50px 3px black;
+	border-radius:10px;
+	font-size:3.5vw;
+	font-weight: 900;
+	text-align: center;
+	border:4px solid black;
+	margin-left: 3%;
+	width:25vw;
+	height:70vh;
+	margin-top: 5%;
+	-webkit-animation:lightup 3s alternate infinite;
+	-webkit-animation-play-state:running;
+	-webkit-animation-delay:0.3s;
+}
+#reading:hover{
+	-webkit-animation-play-state: paused;
+}
+#music{
+	margin-left: 3%;
+	float:left;
+	background:url(bb2.png);
+	color:turquoise;
+	box-shadow: 1px 1px 50px 3px black;
+	border-radius:10px;
+	font-size:3.5vw;
+	font-weight: 900;
+	text-align: center;
+	border:4px solid black;
+	width:25vw;
+	height:70vh;
+	margin-top: 5%;
+	-webkit-animation:lightup 3s alternate infinite;
+	-webkit-animation-play-state:running;
+	-webkit-animation-delay:0.6s;
+}
+#music:hover{
+	-webkit-animation-play-state: paused;
+}
+button{
+	font-family: 'Dosis', sans-serif;
+	width:20vw;
+	height:10vh;
+	border-radius:3vh;
+	background:url(back.jpg);
+	border:4px solid black;
+	color:black;
+	font-size: 3vh;
+}
+
+button:hover{
+	background: red;
+	color:white;
+	text-shadow:1px 1px black;
+}

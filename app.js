@@ -33,7 +33,7 @@ board.on("ready", function() {
 
   // setup a stanard servo, center at start
   servo = new five.Servo({
-    pin:6,
+    pin:2,
     range: [0,180],
     type: "standard",
     center:true
