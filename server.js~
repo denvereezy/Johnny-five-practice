@@ -12,8 +12,7 @@ board = new five.Board();
 // on board ready
 board.on("ready", function() {
 
-var left_wheel  = new five.Servo({ pin:  12, type: 'continuous' }).stop();
-var right_wheel = new five.Servo({ pin: 13, type: 'continuous'  }).stop();
+  
 
   // init a led on pin 13, strobe every 1000ms
   //led = new five.Led(12).strobe(1000);
@@ -61,48 +60,44 @@ board.on("ready", function() {
 
 //servo
 board.on("ready", function() {
+  var left_wheel  = new five.Servo({ pin:  12, type: 'continuous' }).stop();
+  var right_wheel = new five.Servo({ pin: 13, type: 'continuous'  }).stop();
  
   io.sockets.on('connection', function (socket) {
-    socket.on('up', function () {
+    socket.on('click', function () {
       console.log('Forward');
       left_wheel.ccw();
       right_wheel.cw();
     });
   }); 
-});
-
-board.on("ready", function() {
-  
+   
   io.sockets.on('connection', function (socket) {
-    socket.on('down', function () {
+    socket.on('click', function () {
       console.log('Backward');
       left_wheel.cw();
       right_wheel.ccw(); 
     });
-  }); 
-});
+  });   
 
-board.on("ready", function() {
- 
   io.sockets.on('connection', function (socket) {
-    socket.on('left', function () {
+    socket.on('click3', function () {
       console.log('Left');
       left_wheel.ccw();
       right_wheel.ccw(); 
     });
   }); 
-});
-
-board.on("ready", function() {
 
   io.sockets.on('connection', function (socket) {
-    socket.on('right', function () {
+    socket.on('click4', function () {
       console.log('Right');
       left_wheel.cw();
       right_wheel.cw(); 
     });
-  }); 
+  });
+
 });
+
+
 
 
 // on a socket connection

@@ -1,22 +1,16 @@
-// initialize everything, web server, socket.io, filesystem, johnny-five
-var express = require('express')
+var app = require('http').createServer(handler)
   , io = require('socket.io').listen(app)
   , fs = require('fs')
   , five = require("johnny-five"),
   board,servo,led,sensor;
 
-var app = express();
- 
 board = new five.Board();
 
 // on board ready
 board.on("ready", function() {
 
-  var left_wheel  = new five.Servo({ pin:  12, type: 'continuous' }).stop();
-  var right_wheel = new five.Servo({ pin: 13, type: 'continuous'  }).stop();
-
   // init a led on pin 13, strobe every 1000ms
-  //led = new five.Led(12).strobe(1000);
+  led = new five.Led(11).strobe(1000);
 
   // setup a stanard servo, center at start
   servo = new five.Servo({
@@ -35,73 +29,60 @@ board.on("ready", function() {
 });
 
 // make web server listen on port 80
-var port = process.env.PORT || 8060;		
-   //start the server
-   var server = app.listen(port, function () {
-        var host = server.address().address;
-        var port = server.address().port;
-     	console.log('Example app listening at http://%s:%s', host, port);
-
-   });
+app.listen(8010);
 
 
 // handle web server
-app.use(express.static('public'));
+function handler (req, res) {
+  fs.readFile(__dirname + '/index.html',
+  function (err, data) {
+    if (err) {
+      res.writeHead(500);
+      return res.end('Error loading index.html');
+    }
 
-//led on/off
+    res.writeHead(200);
+    res.end(data);
+  });
+}
+
 board.on("ready", function() {
-  led = new five.Led(10);
+ var left_wheel  = new five.Servo({ pin:  12, type: 'continuous' }).stop();
+ var right_wheel = new five.Servo({ pin: 13, type: 'continuous'  }).stop();
+
  
   io.sockets.on('connection', function (socket) {
     socket.on('click', function () {
-      led.toggle();
-    });
-  }); 
-});
-
-//servo
-board.on("ready", function() {
- 
-  io.sockets.on('connection', function (socket) {
-    socket.on('up', function () {
       console.log('Forward');
       left_wheel.ccw();
       right_wheel.cw();
     });
   }); 
-});
-
-board.on("ready", function() {
-  
-  io.sockets.on('connection', function (socket) {
-    socket.on('down', function () {
-      console.log('Backward');
+   
+   io.sockets.on('connection', function (socket) {
+    socket.on('click1', function () {
+      console.log('backward');
       left_wheel.cw();
-      right_wheel.ccw(); 
+      right_wheel.ccw();
     });
   }); 
-});
 
-board.on("ready", function() {
- 
-  io.sockets.on('connection', function (socket) {
-    socket.on('left', function () {
-      console.log('Left');
+ io.sockets.on('connection', function (socket) {
+    socket.on('click2', function () {
+       console.log('Left');
       left_wheel.ccw();
-      right_wheel.ccw(); 
+      right_wheel.ccw();
     });
   }); 
-});
-
-board.on("ready", function() {
 
   io.sockets.on('connection', function (socket) {
-    socket.on('right', function () {
+    socket.on('click3', function () {
       console.log('Right');
       left_wheel.cw();
-      right_wheel.cw(); 
+      right_wheel.cw();
     });
   }); 
+
 });
 
 

@@ -1,63 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<style>
-body{
-    background-image:url("/Wiki-background.jpg");
-}
-#text{
-  color:red;
-  font-size:45px;
-  text-align:center;
-}
-#reading{
-     color:#00FF00;
-     font-size:30px;
-     
-}
-#up{
-   /*position:absolute;*/
-   margin-left:140px;
-   margin-bottom: -10px;
-  
-}
-#left{
-    /*position:absolute;*/
-    
-     
-     margin-top: -200px;
-     margin-bottom: -300px;
-     margin-right: 200px;
-     margin-left: 40px;
-     
-}
-#right{
-    /*position:absolute;*/
-     margin-top: -200px;
-     margin-bottom: -300px;
-     margin-right: -90px;
-     margin-left: -104px;
-}
-#down{
-    /*position:absolute;*/
-    
-     margin-top: -280px;
-     margin-bottom: -580px;
-     margin-right: -90px;
-     margin-left: -207px;
-}
-#direction{
-   padding-top: 30px;
-   width:400px;
-   height:360px;
-   border:5px solid black;
-   background-color: black;
-}
-</style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Robots</title>
+    <title>DMD Robots</title>
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -75,14 +22,14 @@ body{
   </head>
   <body>
     <div class="container">
-        <h1 id="text">See what your robot is up too</h1>
+        <h1>Control your robot with a clivk of a button</h1>
     <div class="row">
       <div class="col-md-4">
-      <h4 id="reading">Readings from Analog 0 pin</h4>
+      <h4>From Analog 0</h4>
       <textarea class="form-control" style="background:#222; color:#00ff00;" rows="8" id="inData"></textarea>
       </div>
       <div class="col-md-4">
-      <h4 id="reading">Servo to position:</h4>
+      <h4>Servo to position:</h4>
         <div class="btn-group" data-toggle="buttons">
             <label class="servobtn btn btn-primary">
               <input type="radio" name="servo" id="servo1" value="0"> 0
@@ -102,23 +49,18 @@ body{
         </div>
       </div>
       <div class="col-md-4">
-      <h4 id="reading">LED Pulse Delay (ms)</h4>
+      <h4>LED Pulse Delay (ms)</h4>
       <p><input type="text" class="form-control" id="ledDelay" name="ledDelay" value="1000" /></p>
       <p><button id="ledSet" class="btn btn-primary">Set Delay</button></p>
       </div>
-      <div class="col-md-4">
       <h4 id="reading">LED Switch</h4>
-      <p><button id="button" href="#">LED ON/OFF</button></p>
+      
+      <p><button id="4wrd" href="#">forward</button></p>
+      <p><button id="back" href="#">backwards</button></p>
+      <p><button id="left" href="#">left</button></p>
+      <p><button id="right" href="#">right</button></p>
       </div>
-  
     </div>
-       <div id="direction">
-<a href="#"><img id ="up" border="0" src="./up.jpeg" width="100" height="100"></a>
-<a href="#"><img id ="left" border="0" src="./left.jpeg" width="100" height="100"></a>
-<a href="#"><img id ="right" border="0" src="./right.jpg" width="100" height="100"></a>
-<a href="#"><img id ="down" border="0" src="./down.jpg" width="100" height="100"></a>
-</a>
-</div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -158,47 +100,39 @@ body{
     <script>
     $(document).ready(function() {
       var socket = io.connect('http://localhost');
-      $('#button').click(function(e){
+      $('#4wrd').click(function(e){
         socket.emit('click');
         e.preventDefault();
       });
     });  
   </script>
-   <script>
+  <script>
     $(document).ready(function() {
       var socket = io.connect('http://localhost');
-      $('#up').click(function(e){
-        socket.emit('up');
+      $('#back').click(function(e){
+        socket.emit('click1');
         e.preventDefault();
       });
     });  
   </script>
-   <script>
-    $(document).ready(function() {
-      var socket = io.connect('http://localhost');
-      $('#down').click(function(e){
-        socket.emit('down');
-        e.preventDefault();
-      });
-    });  
-  </script>
-   <script>
+  <script>
     $(document).ready(function() {
       var socket = io.connect('http://localhost');
       $('#left').click(function(e){
-        socket.emit('left');
+        socket.emit('click2');
         e.preventDefault();
       });
     });  
   </script>
-   <script>
+  <script>
     $(document).ready(function() {
       var socket = io.connect('http://localhost');
       $('#right').click(function(e){
-        socket.emit('right');
+        socket.emit('click3');
         e.preventDefault();
       });
     });  
   </script>
+  
     </body>
 </html>

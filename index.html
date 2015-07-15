@@ -1,25 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<style>
-body{
-    background-image:url("/Wiki-background.jpg");
-}
-#text{
-  color:red;
-  font-size:45px;
-  text-align:center;
-}
-#reading{
-     color:#00FF00;
-     font-size:30px;
-     
-}
-</style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Robots</title>
+    <title>DMD Robots</title>
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -37,14 +22,14 @@ body{
   </head>
   <body>
     <div class="container">
-        <h1 id="text">See what your robot is up too</h1>
+        <h1>Control your robot with a click of a button</h1>
     <div class="row">
       <div class="col-md-4">
-      <h4 id="reading">Readings from Analog 0 pin</h4>
+      <h4>From Analog 0</h4>
       <textarea class="form-control" style="background:#222; color:#00ff00;" rows="8" id="inData"></textarea>
       </div>
       <div class="col-md-4">
-      <h4 id="reading">Servo to position:</h4>
+      <h4>Servo to position:</h4>
         <div class="btn-group" data-toggle="buttons">
             <label class="servobtn btn btn-primary">
               <input type="radio" name="servo" id="servo1" value="0"> 0
@@ -64,13 +49,16 @@ body{
         </div>
       </div>
       <div class="col-md-4">
-      <h4 id="reading">LED Pulse Delay (ms)</h4>
+      <h4>LED Pulse Delay (ms)</h4>
       <p><input type="text" class="form-control" id="ledDelay" name="ledDelay" value="1000" /></p>
       <p><button id="ledSet" class="btn btn-primary">Set Delay</button></p>
       </div>
-      <div class="col-md-4">
       <h4 id="reading">LED Switch</h4>
-      <p><button id="button" href="#">LED ON/OFF</button></p>
+      
+      <p><button id="4wrd" href="#">forward</button></p>
+      <p><button id="back" href="#">backwards</button></p>
+      <p><button id="left" href="#">left</button></p>
+      <p><button id="right" href="#">right</button></p>
       </div>
     </div>
     </div>
@@ -112,11 +100,39 @@ body{
     <script>
     $(document).ready(function() {
       var socket = io.connect('http://localhost');
-      $('#button').click(function(e){
+      $('#4wrd').click(function(e){
         socket.emit('click');
         e.preventDefault();
       });
     });  
   </script>
+  <script>
+    $(document).ready(function() {
+      var socket = io.connect('http://localhost');
+      $('#back').click(function(e){
+        socket.emit('click1');
+        e.preventDefault();
+      });
+    });  
+  </script>
+  <script>
+    $(document).ready(function() {
+      var socket = io.connect('http://localhost');
+      $('#left').click(function(e){
+        socket.emit('click2');
+        e.preventDefault();
+      });
+    });  
+  </script>
+  <script>
+    $(document).ready(function() {
+      var socket = io.connect('http://localhost');
+      $('#right').click(function(e){
+        socket.emit('click3');
+        e.preventDefault();
+      });
+    });  
+  </script>
+  
     </body>
 </html>
