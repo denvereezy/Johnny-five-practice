@@ -19,7 +19,18 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+   
+<style>
+#reading{
+   width:300px;
+   height:300px;
+   border:5px solid black;
+   margin-left:400px;
+   margin-top:200px;
+}
+
+</style>
+</head>
   <body>
     <div class="container">
         <h1>Control your robot with a click of a button</h1>
@@ -53,15 +64,13 @@
       <p><input type="text" class="form-control" id="ledDelay" name="ledDelay" value="1000" /></p>
       <p><button id="ledSet" class="btn btn-primary">Set Delay</button></p>
       </div>
-      <h4 id="reading">LED Switch</h4>
-      
+       <div id="reading">
+      <h4 id="text">Direction control</h4>
       <p><button id="4wrd" href="#">forward</button></p>
       <p><button id="back" href="#">backwards</button></p>
       <p><button id="left" href="#">left</button></p>
       <p><button id="right" href="#">right</button></p>
       </div>
-    </div>
-    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
