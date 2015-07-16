@@ -51,7 +51,7 @@
 
       <div id='music'>
       <h4 id="text">Music control</h4>
-      <p><button id="music" href="#">Music on/off</button></p>
+      <p><button id="musicToggle" href="#">Music on/off</button></p>
       </div>
 
 
@@ -130,7 +130,7 @@
     });
     $(document).ready(function() {
       //var socket = io.connect('http://localhost');
-      $('#music').click(function(e){
+      $('#musicToggle').click(function(e){
         socket.emit('click8');
         e.preventDefault();
       });

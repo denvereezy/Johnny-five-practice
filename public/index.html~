@@ -49,7 +49,7 @@
        <p><button id="stop" href="#">stop</button></p>
       </div>
 
-      <div id='mucsic'>
+      <div id='music'>
       <h4 id="text">Music control</h4>
       <p><button id="music" href="#">Music on/off</button></p>
       </div>
