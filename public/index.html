@@ -31,18 +31,12 @@
     <div class="container">
         <h1>Control your robot with a click of a button</h1>
     <div class="row">
-
-      
-     
-
       <div class="col-md-4" id='lights'>
       <h4>Lights control</h4>
       <p><button id="frontLights" href="#">Lights on/off</button></p>
-      <p><button id="" href="#">Neon on/off</button></p>
-      <h4>Party lights Delay (ms)</h4>
-      <p><input type="text" class="form-control" id="ledDelay" name="ledDelay" value="1000" /></p>
-      <p><button id="ledSet" class="btn btn-primary">Set Delay</button></p>
-       <p><button id="stopDelay" href="#">stop delay</button></p>
+      <p><button id="neon" href="#">Neon on/off</button></p>
+      <h4>Party lights</h4>
+       <p><button id="stopDelay" href="#">on/off</button></p>
       </div>
 
 
@@ -57,7 +51,7 @@
 
       <div id='music'>
       <h4 id="text">Music control</h4>
-      <p><button id="" href="#">Music on/off</button></p>
+      <p><button id="music" href="#">Music on/off</button></p>
       </div>
 
 
@@ -74,13 +68,6 @@
       socket.on('news', function (data) {
         console.log(data);
       });
-
-      $('#ledSet').on('click',function(){
-        var tmp = parseInt($('#ledDelay').val(),10);
-        console.log("Setting LED Delay:",tmp)
-        socket.emit('led',{delay:tmp});
-      });
-
     </script>
     <script>
     $(document).ready(function() {
@@ -119,6 +106,14 @@
         e.preventDefault();
       });
     }); 
+   
+     $(document).ready(function() {
+      //var socket = io.connect('http://localhost');
+      $('#frontLights').click(function(e){
+        socket.emit('click5');
+        e.preventDefault();
+      });
+    });
       $(document).ready(function() {
       //var socket = io.connect('http://localhost');
       $('#stopDelay').click(function(e){
@@ -128,8 +123,15 @@
     });
      $(document).ready(function() {
       //var socket = io.connect('http://localhost');
-      $('#frontLights').click(function(e){
-        socket.emit('click5');
+      $('#neon').click(function(e){
+        socket.emit('click7');
+        e.preventDefault();
+      });
+    });
+    $(document).ready(function() {
+      //var socket = io.connect('http://localhost');
+      $('#music').click(function(e){
+        socket.emit('click8');
         e.preventDefault();
       });
     });   

@@ -85,6 +85,8 @@ var right_wheel = new five.Servo({ pin: 13, type: 'continuous'  }).stop();
     socket.on('click3', function () {
       console.log('Right');
       led2.off();
+      led4.off();
+      led5.strobe(200);
       left_wheel.cw();
       right_wheel.cw();
     });
@@ -99,6 +101,18 @@ var right_wheel = new five.Servo({ pin: 13, type: 'continuous'  }).stop();
       right_wheel.stop();
     });
   });
+  io.sockets.on('connection', function (socket) {
+    socket.on('click7', function () {
+      console.log('neon');
+      led3.toggle();
+    });
+  });
+  io.sockets.on('connection', function (socket) {
+    socket.on('click8', function () {
+      console.log('music');
+      led7.toggle();
+    });
+  });
 });
 
 
@@ -107,7 +121,7 @@ io.sockets.on('connection', function (socket) {
   socket.emit('news', { hello: 'world' });
  
   // if led message received
-  socket.on('ledf', function (data) {
+  socket.on('led6', function (data) {
     console.log(data);
      if(board.isReady){    led.strobe(data.delay); } 
   });
