@@ -1,0 +1,18 @@
+{
+  "name": "Johnny-five-practice",
+  "version": "0.0.0",
+  "description": "Some code I am currently working on to build a robot with some nice tricks and also future robots",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/denvereezy/Johnny-five-practice.git"
+  },
+  "author": "Denver Daniels (back end)",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/denvereezy/Johnny-five-practice/issues"
+  }
+}

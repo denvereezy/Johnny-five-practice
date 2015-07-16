@@ -1,84 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DMD Robots</title>
-
+<link href='http://fonts.googleapis.com/css?family=Dosis:400,600' rel='stylesheet' type='text/css'>
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
+    <link rel='stylesheet' type='text/css' href="main.css">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-   
-<style>
-#reading{
-   width:300px;
-   height:300px;
-   border:5px solid black;
-   margin-left:400px;
-   margin-top:200px;
-}
-
-</style>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type='text/javascript' src='main.js'></script>
 </head>
+
+
+
+
+
   <body>
     <div class="container">
         <h1>Control your robot with a click of a button</h1>
     <div class="row">
-      <div class="col-md-4">
-      <h4>From Analog 0</h4>
-      <textarea class="form-control" style="background:#222; color:#00ff00;" rows="8" id="inData"></textarea>
-      </div>
-      <div class="col-md-4">
-      <h4>Servo to position:</h4>
-        <div class="btn-group" data-toggle="buttons">
-            <label class="servobtn btn btn-primary">
-              <input type="radio" name="servo" id="servo1" value="0"> 0
-            </label>
-            <label class="servobtn btn btn-primary">
-              <input type="radio" name="servo" id="servo2" value="45"> 45
-            </label>
-            <label class="servobtn btn btn-primary">
-              <input type="radio" name="servo" id="servo3" value="90"> 90
-            </label>
-            <label class="servobtn btn btn-primary">
-              <input type="radio" name="servo" id="servo4" value="135"> 135
-            </label>            
-            <label class="servobtn btn btn-primary">
-              <input type="radio" name="servo" id="servo5" value="180"> 180
-            </label>
-        </div>
-      </div>
-      <div class="col-md-4">
+
+      
+     
+
+      <div class="col-md-4" id='lights'>
       <h4>Lights control</h4>
-      <p><button id="" href="#">Lights on/off</button></p>
+      <p><button id="frontLights" href="#">Lights on/off</button></p>
       <p><button id="" href="#">Neon on/off</button></p>
       <h4>Party lights Delay (ms)</h4>
       <p><input type="text" class="form-control" id="ledDelay" name="ledDelay" value="1000" /></p>
       <p><button id="ledSet" class="btn btn-primary">Set Delay</button></p>
+       <p><button id="stopDelay" href="#">stop delay</button></p>
       </div>
+
+
        <div id="reading">
       <h4 id="text">Direction control</h4>
       <p><button id="4wrd" href="#">forward</button></p>
       <p><button id="back" href="#">backwards</button></p>
       <p><button id="left" href="#">left</button></p>
       <p><button id="right" href="#">right</button></p>
+       <p><button id="stop" href="#">stop</button></p>
       </div>
 
-      <div>
+      <div id='music'>
       <h4 id="text">Music control</h4>
       <p><button id="" href="#">Music on/off</button></p>
       </div>
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -87,24 +69,10 @@
     <script>
 
 
-      var socket = io.connect('http://localhost');
+      var socket = io();
 
       socket.on('news', function (data) {
         console.log(data);
-      });
-
-      socket.on('sensor', function (data) {
-        console.log("Incoming sensor data:",data.raw);
-        $("#inData").append(data.raw+"\r");
-        $("#inData").animate({scrollTop:$("#inData")[0].scrollHeight - $("#inData").height()},200);
-
-      });
-
-      $('.servobtn').button();
-
-      $('.servobtn').on('change',function(){
-          console.log("Setting Servo Pos:",$('input[name=servo]:checked').val())
-          socket.emit('servo',{pos:$('input[name=servo]:checked').val()});
       });
 
       $('#ledSet').on('click',function(){
@@ -116,40 +84,57 @@
     </script>
     <script>
     $(document).ready(function() {
-      var socket = io.connect('http://localhost');
+      //var socket = io.connect('http://localhost');
       $('#4wrd').click(function(e){
         socket.emit('click');
         e.preventDefault();
       });
-    });  
-  </script>
-  <script>
-    $(document).ready(function() {
-      var socket = io.connect('http://localhost');
+      
+      //
+      $(document).ready(function() {
+      //var socket = io.connect('http://localhost');
       $('#back').click(function(e){
         socket.emit('click1');
         e.preventDefault();
       });
-    });  
-  </script>
-  <script>
-    $(document).ready(function() {
-      var socket = io.connect('http://localhost');
+    }); 	
+     $(document).ready(function() {
+      //var socket = io.connect('http://localhost');
       $('#left').click(function(e){
         socket.emit('click2');
         e.preventDefault();
       });
-    });  
-  </script>
-  <script>
+    });
     $(document).ready(function() {
-      var socket = io.connect('http://localhost');
+      //var socket = io.connect('http://localhost');
       $('#right').click(function(e){
         socket.emit('click3');
         e.preventDefault();
       });
-    });  
+    });
+        $(document).ready(function() {
+      //var socket = io.connect('http://localhost');
+      $('#stop').click(function(e){
+        socket.emit('click4');
+        e.preventDefault();
+      });
+    }); 
+      $(document).ready(function() {
+      //var socket = io.connect('http://localhost');
+      $('#stop').click(function(e){
+        socket.emit('click6');
+        e.preventDefault();
+      });
+    });
+     $(document).ready(function() {
+      //var socket = io.connect('http://localhost');
+      $('#frontLights').click(function(e){
+        socket.emit('click5');
+        e.preventDefault();
+      });
+    });   
+    });      
   </script>
-  
+ 
     </body>
 </html>

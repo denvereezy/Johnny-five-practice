@@ -37,12 +37,12 @@
 
       <div class="col-md-4" id='lights'>
       <h4>Lights control</h4>
-      <p><button id="" href="#">Lights on/off</button></p>
+      <p><button id="frontLights" href="#">Lights on/off</button></p>
       <p><button id="" href="#">Neon on/off</button></p>
       <h4>Party lights Delay (ms)</h4>
       <p><input type="text" class="form-control" id="ledDelay" name="ledDelay" value="1000" /></p>
       <p><button id="ledSet" class="btn btn-primary">Set Delay</button></p>
-       <p><button id="stop" href="#">stop delay</button></p>
+       <p><button id="stopDelay" href="#">stop delay</button></p>
       </div>
 
 
@@ -69,24 +69,10 @@
     <script>
 
 
-      var socket = io.connect('http://localhost');
+      var socket = io();
 
       socket.on('news', function (data) {
         console.log(data);
-      });
-
-      socket.on('sensor', function (data) {
-        console.log("Incoming sensor data:",data.raw);
-        $("#inData").append(data.raw+"\r");
-        $("#inData").animate({scrollTop:$("#inData")[0].scrollHeight - $("#inData").height()},200);
-
-      });
-
-      $('.servobtn').button();
-
-      $('.servobtn').on('change',function(){
-          console.log("Setting Servo Pos:",$('input[name=servo]:checked').val())
-          socket.emit('servo',{pos:$('input[name=servo]:checked').val()});
       });
 
       $('#ledSet').on('click',function(){
@@ -98,40 +84,57 @@
     </script>
     <script>
     $(document).ready(function() {
-      var socket = io.connect('http://localhost');
+      //var socket = io.connect('http://localhost');
       $('#4wrd').click(function(e){
         socket.emit('click');
         e.preventDefault();
       });
-    });  
-  </script>
-  <script>
-    $(document).ready(function() {
-      var socket = io.connect('http://localhost');
+      
+      //
+      $(document).ready(function() {
+      //var socket = io.connect('http://localhost');
       $('#back').click(function(e){
         socket.emit('click1');
         e.preventDefault();
       });
-    });  
-  </script>
-  <script>
-    $(document).ready(function() {
-      var socket = io.connect('http://localhost');
+    }); 	
+     $(document).ready(function() {
+      //var socket = io.connect('http://localhost');
       $('#left').click(function(e){
         socket.emit('click2');
         e.preventDefault();
       });
-    });  
-  </script>
-  <script>
+    });
     $(document).ready(function() {
-      var socket = io.connect('http://localhost');
+      //var socket = io.connect('http://localhost');
       $('#right').click(function(e){
         socket.emit('click3');
         e.preventDefault();
       });
-    });  
+    });
+        $(document).ready(function() {
+      //var socket = io.connect('http://localhost');
+      $('#stop').click(function(e){
+        socket.emit('click4');
+        e.preventDefault();
+      });
+    }); 
+      $(document).ready(function() {
+      //var socket = io.connect('http://localhost');
+      $('#stopDelay').click(function(e){
+        socket.emit('click6');
+        e.preventDefault();
+      });
+    });
+     $(document).ready(function() {
+      //var socket = io.connect('http://localhost');
+      $('#frontLights').click(function(e){
+        socket.emit('click5');
+        e.preventDefault();
+      });
+    });   
+    });      
   </script>
-  
+ 
     </body>
 </html>
