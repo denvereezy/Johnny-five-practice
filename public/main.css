@@ -1,9 +1,10 @@
 body{
 		transform:scale(0);
-	background-image:url('./robot2.jpg');
+	background:url('./robot.jpg')no-repeat center center fixed; 
 	margin-left:-100%;
 	transition:all 2s ease-in-out;
 	-webkit-filter:blur(0.8px);
+	-moz-filter:blur(0.8px);
 }
 
 @-webkit-keyframes lightup{
@@ -18,7 +19,18 @@ body{
 		box-shadow: 1px 1px 50px 10px black;
 	}
 }
-
+@-moz-keyframes lightup{
+	0%{
+		box-shadow: 1px 1px 10px 3px black;
+	}
+	50%{
+		transform:scale(1.02);
+		transition:transform 1s linear;
+	}
+	100%{
+		box-shadow: 1px 1px 50px 10px black;
+	}
+}
 
 
 
@@ -67,10 +79,31 @@ h4{
 	height:70vh;
 	-webkit-animation:lightup 3s alternate infinite;
 	-webkit-animation-play-state:running;
+	-moz-animation:lightup 3s alternate infinite;
+	-moz-animation-play-state:running;
 	
 }
+.lightBtn{
+	color:white;
+	text-shadow:1px 1px black;
+	font-weight: 900;
+	font-size:2vw;
+	margin-right:1%;
+}
+.light{
+	max-width:8vw;
+	max-height: 8vh;
+	display:inline;
+}
+.light:hover{
+	-webkit-filter: drop-shadow(1px 1px 5px red);
+    filter:         drop-shadow(1px 1px 5px red); 
+   
+}
+
 #lights:hover{
 	-webkit-animation-play-state: paused;
+	-moz-animation-play-state: paused;
 }
 #reading{
 	float:left;
@@ -89,9 +122,29 @@ h4{
 	-webkit-animation:lightup 3s alternate infinite;
 	-webkit-animation-play-state:running;
 	-webkit-animation-delay:0.3s;
+	-moz-animation:lightup 3s alternate infinite;
+	-moz-animation-play-state:running;
+	-moz-animation-delay:0.3s;
 }
 #reading:hover{
 	-webkit-animation-play-state: paused;
+}
+
+img{
+
+		max-width: 5vw;
+		max-height: 5vh;
+}
+#stop img{
+
+		max-width: 20vw;
+		max-height: 15h;
+}
+#reading #left{
+		float:left;
+}
+#reading #right{
+		float:right;
 }
 #music{
 	margin-left: 3%;
@@ -110,13 +163,16 @@ h4{
 	-webkit-animation:lightup 3s alternate infinite;
 	-webkit-animation-play-state:running;
 	-webkit-animation-delay:0.6s;
+	-moz-animation:lightup 3s alternate infinite;
+	-moz-animation-play-state:running;
+	-moz-animation-delay:0.3s;
 }
 #music:hover{
-	-webkit-animation-play-state: paused;
+	-moz-animation-play-state: paused;
 }
 button{
 	font-family: 'Dosis', sans-serif;
-	width:20vw;
+	width:10vw;
 	height:10vh;
 	border-radius:3vh;
 	background:url(back.jpg);
