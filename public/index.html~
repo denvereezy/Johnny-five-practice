@@ -4,7 +4,8 @@
      <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DMD Robots</title>
+    <title>DMD Robots</title> 
+    <link rel="icon" type="image/png" href="./icon.jpg">
 <link href='http://fonts.googleapis.com/css?family=Dosis:400,600' rel='stylesheet' type='text/css'>
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -33,26 +34,35 @@
     <div class="row">
       <div class="col-md-4" id='lights'>
       <h4>Lights control</h4>
-      <p><button id="frontLights" href="#">Lights on/off</button></p>
-      <p><button id="neon" href="#">Neon on/off</button></p>
+      <p class='lightBtn'>Front Lights
+      <img id="frontLights" class='light' src='off.png'></p>
+      <p class='lightBtn'>Neon Lights
+      <img id="neon" class='light' src='off.png' ></p>
       <h4>Party lights</h4>
-       <p><button id="stopDelay" href="#">on/off</button></p>
+       <p class='lightBtn'>on/off &nbsp<img id="stopDelay" class='light' src='off.png'></p>
       </div>
 
 
        <div id="reading">
       <h4 id="text">Direction control</h4>
-      <p><button id="4wrd" href="#">forward</button></p>
-      <p><button id="back" href="#">backwards</button></p>
-      <p><button id="left" href="#">left</button></p>
-      <p><button id="right" href="#">right</button></p>
-       <p><button id="stop" href="#">stop</button></p>
+      <p><button id="4wrd" href="#"><img src='forward.png'></button></p>     
+      <p><button id="left" href="#"><img src='left.png'></button></p>
+      <p><button id="right" href="#"><img src='right.png'></button></p>
+      <p><button id="back" href="#"><img src='down.png'></button></p>
+       <p><button id="stop" href="#"><img src='stop.png'></button></p>
       </div>
 
       <div id='music'>
       <h4 id="text">Music control</h4>
-      <p><button id="music" href="#">Music on/off</button></p>
+      <p class='lightBtn'>Music on/off &nbsp<img id="musicToggle" class='light' src='off.png'></p>
+      <img id='animation' src="dancer.gif">
       </div>
+      <div class="outer">
+	Click here for more info
+	<div class="inner">
+		More info!
+	</div>
+</div>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -130,7 +140,7 @@
     });
     $(document).ready(function() {
       //var socket = io.connect('http://localhost');
-      $('#music').click(function(e){
+      $('#musicToggle').click(function(e){
         socket.emit('click8');
         e.preventDefault();
       });

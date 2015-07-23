@@ -13,7 +13,7 @@ var express = require('express'),
 
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);  //pass a http.Server instance
-server.listen(8010);  //
+server.listen(8000);  //
 board = new five.Board();
 
 
@@ -57,7 +57,7 @@ var right_wheel = new five.Servo({ pin: 13, type: 'continuous'  }).stop();
    io.sockets.on('connection', function (socket) {
     socket.on('click6', function () {
       console.log('party');
-      led5.strobe(80);
+      led6.toggle();
       
     });
   });

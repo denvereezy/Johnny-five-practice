@@ -66,7 +66,7 @@ $(document).ready(function(){
 
 
 	var _musicOn = false;
-	$('#_musicOn').click(function(){
+	$('#musicToggle').click(function(){
 		_musicOn=!_musicOn;
 
 		
@@ -80,7 +80,7 @@ $(document).ready(function(){
 			$(this).css({webkitFilter:'drop-shadow(1px 1px 5px red)'})
 		}
 	})
-	$('#_musicOn').mouseenter(function(){
+	$('#musicToggle').mouseenter(function(){
 		if($(this).attr('src') == 'on.png'){	 
 			$(this).css({webkitFilter:'drop-shadow(1px 1px 5px green)'})
 		}
@@ -88,7 +88,7 @@ $(document).ready(function(){
 			$(this).css({webkitFilter:'drop-shadow(1px 1px 5px red)'})
 		}
 	})
-	$('#_musicOn').mouseleave(function(){
+	$('#musicToggle').mouseleave(function(){
 		$(this).css({webkitFilter:'drop-shadow(0px 0px 0px)'})
 	})
 

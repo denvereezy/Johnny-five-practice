@@ -3,7 +3,6 @@ body{
 	background:url('./robot.jpg')no-repeat center center fixed; 
 	margin-left:-100%;
 	transition:all 2s ease-in-out;
-	-webkit-filter:blur(0.8px);
 	-moz-filter:blur(0.8px);
 }
 
@@ -34,9 +33,11 @@ body{
 
 
 
-h1{ text-shadow:1px 1px red;
+h1{ text-shadow:1px 1px turquoise;
 	font-family: 'Open Sans', sans-serif;
-	background:black;
+	background-image:url('h2.jpg');
+        background-size:cover;
+        background-position:center;
 	color:white;
 	padding:1%;
 	box-shadow: 1px 1px 10px 3px black;
@@ -45,6 +46,12 @@ h1{ text-shadow:1px 1px red;
 	font-weight: 900;
 	text-align: center;
 	border:2px solid black;
+        -webkit-animation:lightup 3s alternate infinite;
+	-webkit-animation-play-state:running;
+	-webkit-animation-delay:0.6s;
+	-moz-animation:lightup 3s alternate infinite;
+	-moz-animation-play-state:running;
+	-moz-animation-delay:0.3s;
 
 
 }
@@ -128,6 +135,7 @@ h4{
 }
 #reading:hover{
 	-webkit-animation-play-state: paused;
+	-moz-animation-play-state: paused;
 }
 
 img{
@@ -168,6 +176,7 @@ img{
 	-moz-animation-delay:0.3s;
 }
 #music:hover{
+        -webkit-animation-play-state: paused;
 	-moz-animation-play-state: paused;
 }
 button{
@@ -186,3 +195,9 @@ button:hover{
 	color:white;
 	text-shadow:1px 1px black;
 }
+#animation{
+    max-height:100%;
+    max-width:100%;
+}
+
+
